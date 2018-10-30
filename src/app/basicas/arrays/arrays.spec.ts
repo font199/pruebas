@@ -1,6 +1,6 @@
 import { obtenirMotos } from './arrays';
 
-describe('Provas de arrays' , () => {
+xdescribe('Provas de arrays' , () => {
 
     it('Ha de retornar al menys 3 motos', () =>{
        const resp = obtenirMotos();
@@ -14,3 +14,4 @@ describe('Provas de arrays' , () => {
      });
 
 });
+
