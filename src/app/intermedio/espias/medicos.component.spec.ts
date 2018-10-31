@@ -18,7 +18,7 @@ describe('MedicosComponent', () => {
 
 
     it('Init: ha de carreagar els metges', () => { 
-        const medicos = ['medico1','medico2','medico3'];
+        const medicos = ['medico1','medico2','medico3']; 
 
         //Espies el "servicio" i si algu crida a "getMedicos" llavors no l'executas 
         // i retornas l'observable generat
