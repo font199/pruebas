@@ -1,6 +1,8 @@
 
 import { MedicoComponent } from "./medico.component";
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { MedicoService } from "./medico.service";
+import { HttpClientModule } from "@angular/common/http";
 
 
 describe('Medico Component', () => {
@@ -10,7 +12,9 @@ describe('Medico Component', () => {
 
     beforeEach( () => {
         TestBed.configureTestingModule({
-            declarations: [MedicoComponent]
+            declarations: [MedicoComponent],
+            providers: [MedicoService],
+            imports: [HttpClientModule]
         })
         //per poder teni acces al html, ..
         fixture = TestBed.createComponent(MedicoComponent);
@@ -21,6 +25,13 @@ describe('Medico Component', () => {
 
     it('Ha de crearse el component', () =>{
         expect(component).toBeTruthy;
+    });
+
+    it('Debe de retornar el nombre del medico', () =>{
+        const nombre = 'Juan';
+        const res = component.saludarMedico(nombre);
+
+        expect(res).toContain(nombre);
     });
 
 });
