@@ -1,18 +1,26 @@
 import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { RouterTestingModule } from "@angular/router/testing";
+import { By } from "@angular/platform-browser";
+import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import { NavbarComponent } from './avanzado/navbar/navbar.component';
+import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule.withRoutes([])
       ],
+     // schemas: [NO_ERRORS_SCHEMA],    //Perque no ens dongui errors de components que no tenim importats aqui
       declarations: [
-        AppComponent
+        AppComponent,
+        NavbarComponent
       ],
     }).compileComponents();
   }));
+
+  
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -26,10 +34,15 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('pruebas');
   });
 
-  it('should render title in a h1 tag', () => {
+  it('Debe de tenre un router-outlet ', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to pruebas!');
+
+    const debugElement = fixture.debugElement.query(By.directive(RouterOutlet));
+
+    expect(debugElement).not.toBeNull();
   });
+
+
+
+
 });
